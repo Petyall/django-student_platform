@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('auth/', include('authentification.urls')),
+    path('blog/', include('blog.urls')),
 ]

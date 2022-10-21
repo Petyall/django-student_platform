@@ -16,3 +16,57 @@
     <li><a href="{% url 'register' %}">Регистрация</a></li>
     {% endif %}
   </ul>
+
+
+
+
+
+
+<center>
+<!-- Форма связи -->
+<div class="contact-from-section mt-150 mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mb-5 mb-lg-0">
+        <div class="form-title">
+          <h2>Есть какие-то вопросы?</h2>
+          <p>
+            Напишите в нашу службу тех.поддержки, которая ответит Вам в
+            кратчайшие сроки!
+          </p>
+        </div>
+        <div id="form_status"></div>
+        <div class="contact-form">
+          <form method="post">
+            {% csrf_token %}
+            
+            <p>{{ form.name }}
+            {{ form.email }}</p>
+            <p>{{ form.phone_number }}
+            {{ form.theme }}</p>
+            <p>{{ form.text }}</p>
+          
+            <button type="submit" class="btn btn-link"><a class="boxed-btn black" style="font-family:Roboto">Отправить</a></button>
+       </form> 
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+
+
+
+{% for blog in blogs %}
+<div class="row justify-content-center my-3">
+  <div class="col-md-10">
+    <a href="{% url 'blog:detail' blog.id %}">
+      <h2>{{ blog.title }}</h2>
+    </a>
+    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
+    <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
+  </div>
+</div>
+{% endfor %}
+ 
