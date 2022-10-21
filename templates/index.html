@@ -1,0 +1,18 @@
+<h1>Home page</h1>
+
+<a href="#">
+    {% if user.is_authenticated %}
+      {{ user.username }}
+    {% else %}
+      Войти/Зарегистрироваться
+    {% endif %}
+  </a>
+  <ul class="sub-menu">
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
+    <li><a href="{% url 'logout' %}">Выйти</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}">Вход</a></li>
+    <li><a href="{% url 'register' %}">Регистрация</a></li>
+    {% endif %}
+  </ul>
