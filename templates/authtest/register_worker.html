@@ -1,0 +1,31 @@
+
+{% load static %} 
+
+{% block title %} 
+Регистрация | MHW
+{% endblock title %} 
+
+{% block container %} 
+
+<!-- Шапка -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Регистрация</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h2>{{error}}</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+<!-- Конец формы регистрации -->
+{% endblock container %}

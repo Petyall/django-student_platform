@@ -20,14 +20,14 @@ def profile(request):
     return render(request, 'auth/profile.html', text)
 
 def download_file(request):
-
-    group = request.user.first_name
+    # if group:
+    # group = request.user.group
     BASE_DIR = Path(__file__).resolve().parent.parent
     base_str = str(BASE_DIR)
 
-    filename = group+'.xlsx'
+    filename = 'schedule.xlsx'
     # Define the full file path
-    filepath = base_str + "\\schedule\\" + filename
+    filepath = base_str + "\\schedule\\" + 'schedule.xlsx'
     print(filepath)
     
     # Open the file for reading content

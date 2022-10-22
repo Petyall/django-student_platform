@@ -39,20 +39,14 @@ class UserLoginForm(forms.Form):
         if not self.user.check_password(password):
             raise forms.ValidationError(f'Пароль пользователя {username} введён неправильно!')
 
-class WorkersRegistrationForm(forms.ModelForm):
+class WorkerRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
-
-        labels = {
-        'username':  'Ваш никнейм',
-        'first_name':  'Ваше имя',
-        'last_name':  'Ваша фамилия',
-        'password': 'Ваш пароль',
-        }
+        model = CustomUser
+        # fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username','first_name', 'last_name', 'email', 'type')
 
     def clean_password2(self):
         cd = self.cleaned_data

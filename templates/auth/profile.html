@@ -2,9 +2,9 @@
 <h1>Личный кабинет</h1>
 <a href="{% url 'index' %}">Вернуться</a>
 <h2>
-<br>Здравствуйте, - {{ user }} {{ user.last_name }}!
+<br>Здравствуйте, {{ user.first_name }} {{ user.last_name }}!
 <br>Ваша почта - {{ user.email }}
-<br>Ваша группа - {{ user.first_name }}
+<br>Ваша группа - {{ user.group }}
 </h2>
 
 
