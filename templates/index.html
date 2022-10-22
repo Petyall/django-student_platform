@@ -10,10 +10,10 @@
   <ul class="sub-menu">
     {% if user.is_authenticated %}
     <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
-    <li><a href="{% url 'logout' %}">Выйти</a></li>
+    <li><a href="{% url 'authtest_logout' %}">Выйти</a></li>
     {% else %}
-    <li><a href="{% url 'login' %}">Вход</a></li>
-    <li><a href="{% url 'register' %}">Регистрация</a></li>
+    <li><a href="{% url 'authtest_login' %}">Вход</a></li>
+    <li><a href="{% url 'authtest_register' %}">Регистрация</a></li>
     {% endif %}
   </ul>
 
