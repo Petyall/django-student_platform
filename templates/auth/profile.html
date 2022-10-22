@@ -18,3 +18,22 @@
 
 </center>
 
+<center>
+<table  border="1" cellpadding="4" cellspacing="0">
+   <caption>Расписание</caption>
+   <tr>
+    <th>День недели</th><th>1 пара</th><th>2 пара</th><th>3 пара</th><th>4 пара</th><th>5 пара</th>
+   </tr>
+   {% for key, value in text.items %}
+   <tr>
+       {% for lesson in value %}
+       {% if lesson == None %}
+           <td></td>
+       {% else %}
+           <td>{{lesson | linebreaksbr}}</td>
+       {% endif %}
+       {% endfor %}
+   </tr>
+   {% endfor %}
+  </table>
+</center>

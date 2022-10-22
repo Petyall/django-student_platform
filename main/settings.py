@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentification',
     'contact',
     'blog',
+    'user_profile',
 ]
 
 MIDDLEWARE = [
