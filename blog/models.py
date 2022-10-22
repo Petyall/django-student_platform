@@ -9,7 +9,7 @@ class Blog(models.Model):
     STATUS_SOC_LIFE = 'Социальная жизнь'
     STATUS_STUD_NEWS = 'Учебные новости'
     STATUS_UNI_LIFE = 'Жизнь ВУЗа'
-    # Перенос этих статусов, чтобы их можно было выбирать
+
     STATUS_CHOICES = [
         (STATUS_SOC_LIFE, 'Социальная жизнь'),
         (STATUS_STUD_NEWS, 'Учебные новости'),

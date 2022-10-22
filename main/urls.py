@@ -8,5 +8,4 @@ urlpatterns = [
     path('auth/', include('authtest.urls')),
     path('blog/', include('blog.urls')),
     path('profile/', include('user_profile.urls')),
-    # path('authtest/', include('authtest.urls')),
 ]

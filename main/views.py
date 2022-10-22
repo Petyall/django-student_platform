@@ -1,15 +1,11 @@
-
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from contact.forms import ContactForm
-from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
 from blog.models import Blog
 
 
 def index(request):
 
     blogs = Blog.objects.order_by('-date')
-
     error = ''
 
     form = ContactForm()
@@ -27,5 +23,3 @@ def index(request):
             error = 'Форма была неверной'
 
     return render(request, 'index.html', context)
-
-

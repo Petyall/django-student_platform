@@ -2,8 +2,6 @@ from contact.models import Contact
 from django.forms import ModelForm, TextInput, Textarea
 
 
-
-
 class ContactForm(ModelForm):
     class Meta:
         model = Contact
@@ -25,3 +23,4 @@ class ContactForm(ModelForm):
                 'placeholder': 'Опишите Вашу проблему в деталях',
             })
         }
+        
