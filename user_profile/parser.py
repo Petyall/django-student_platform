@@ -31,17 +31,21 @@ def parser(request):
         base_str = str(BASE_DIR)
         filepath = base_str + "\\schedule\\" + 'schedule.xlsx'
         book = load_workbook(filename=filepath)
-        sheet = book[FI]
-        i = 0
-        for item in book[FI]:
-            i = i + 1
-        a = {}
-        keys = 'A', 'B', 'C', 'D', 'E', 'F'
-        for key in keys:
-            a.setdefault(key,[])
-            for j in range(1, i+1):
-                a[key].append(sheet[key + str(j)].value)        
-            
+        try:
+            book[FI]
+            sheet = book[FI]
+            i = 0
+            for item in book[FI]:
+                i = i + 1
+            a = {}
+            keys = 'A', 'B', 'C', 'D', 'E', 'F'
+            for key in keys:
+                a.setdefault(key,[])
+                for j in range(1, i+1):
+                    a[key].append(sheet[key + str(j)].value)   
+        except:
+            a = 'Расписания нет' 
+   
     context = {
         'text': a
     }

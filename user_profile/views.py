@@ -15,7 +15,6 @@ def download_file(request):
     base_str = str(BASE_DIR)
     filename = 'schedule.xlsx'
     filepath = base_str + "\\schedule\\" + 'schedule.xlsx'
-    print(filepath)
     path = open(filepath, 'rb')
     mime_type, _ = mimetypes.guess_type(filepath)
     response = HttpResponse(path, content_type=mime_type)

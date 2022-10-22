@@ -19,6 +19,7 @@
 </center>
 
 <center>
+{% if text != 'Расписания нет' %}
 <table  border="1" cellpadding="4" cellspacing="0">
    <caption>Расписание</caption>
    <tr>
@@ -37,3 +38,6 @@
    {% endfor %}
   </table>
 </center>
+{% else %}
+<h1>расписания нет</h1>
+{%endif%}
