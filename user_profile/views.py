@@ -22,17 +22,8 @@ def profile(request):
 def download_file(request):
 
     group = request.user.first_name
-    # Define Django project base directory
     BASE_DIR = Path(__file__).resolve().parent.parent
     base_str = str(BASE_DIR)
-    # Define text file name
-
-    # for g in Schedule.get_groups(request):
-    #     if User.first_name == g:
-    #         filegroup = Schedule.group+'.xlsx'
-    #     else:
-    #         pass
-    # a = User.first_name
 
     filename = group+'.xlsx'
     # Define the full file path

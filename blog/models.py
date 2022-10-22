@@ -5,10 +5,6 @@ class Blog(models.Model):
     title = models.CharField('Название', max_length=100)
     description = models.TextField('Описание')
     date = models.DateField('Дата')
-    # социальная
-    # жизнь, учебные
-    # новости, жизнь
-    # ВУЗа
 
     STATUS_SOC_LIFE = 'Социальная жизнь'
     STATUS_STUD_NEWS = 'Учебные новости'

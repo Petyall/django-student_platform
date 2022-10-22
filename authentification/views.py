@@ -12,7 +12,6 @@ import mimetypes
 from authentification.forms import UserRegistrationForm, UserLoginForm
 from django.http.response import HttpResponse
 
-# from authentification.models import Schedule
 
 
 def registration_student(request):
@@ -103,38 +102,4 @@ def logout_user(request):
     return redirect('index')
 
 
-
-# def profile(request):
-#     return render(request, 'auth/profile.html')
-
-# def download_file(request):
-
-#     group = request.user.first_name
-#     # Define Django project base directory
-#     BASE_DIR = Path(__file__).resolve().parent.parent
-#     base_str = str(BASE_DIR)
-#     # Define text file name
-
-#     # for g in Schedule.get_groups(request):
-#     #     if User.first_name == g:
-#     #         filegroup = Schedule.group+'.xlsx'
-#     #     else:
-#     #         pass
-#     # a = User.first_name
-
-#     filename = group+'.xlsx'
-#     # Define the full file path
-#     filepath = base_str + "\\schedule\\" + filename
-#     print(filepath)
-    
-#     # Open the file for reading content
-#     path = open(filepath, 'rb')
-#     # Set the mime type
-#     mime_type, _ = mimetypes.guess_type(filepath)
-#     # Set the return value of the HttpResponse
-#     response = HttpResponse(path, content_type=mime_type)
-#     # Set the HTTP header for sending to browser
-#     response['Content-Disposition'] = "attachment; filename=%s" % filename
-#     # Return the response value
-#     return response
 
