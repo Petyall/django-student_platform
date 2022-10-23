@@ -9,7 +9,7 @@
 
 1:
 
-    https://github.com/Petyall/hackaton2022.git 
+    git clone https://github.com/Petyall/hackaton2022.git 
 
 2:
 
@@ -25,7 +25,7 @@
  
 5:
 
-    pip install requirements.txt
+    pip install -r requirements.txt
 
 6:
 
