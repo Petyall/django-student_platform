@@ -82,14 +82,14 @@ DSTU
        </tr>
        {% endfor %}
       </table>
+
+        <div class="my-5">
+        <a href="{% url 'download_file'  %}"><h5>Скачать расписание</h5></a>
+        </div>
     </center>
     {% else %}
     <h1>расписания нет</h1>
     {%endif%}
-    <center>
-        <div class="my-5">
-        <a href="{% url 'download_file'  %}"><h5>Скачать расписание</h5></a>
-        </div>
-     </center>
+
     {% endblock container %} 
     

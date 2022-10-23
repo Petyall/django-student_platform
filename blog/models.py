@@ -19,5 +19,12 @@ class Blog(models.Model):
     status = models.CharField(max_length=32, choices=STATUS_CHOICES,
                               default=STATUS_SOC_LIFE, verbose_name='Состояние заказа')
 
+    class Meta:
+        verbose_name = "Статьи"
+        verbose_name_plural = "Статьи"
+        ordering = ['pk']
+
     def __str__(self):
         return self.title
+
+

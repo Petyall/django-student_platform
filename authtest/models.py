@@ -20,3 +20,6 @@ class CustomUser(AbstractUser):
     group = models.CharField('Группа', max_length=5, choices=GROUPS, default=' ')
     type = models.CharField('Тип', max_length=20, choices=TYPES, default=' ')
 
+    def __str__(self):
+        return f'{self.username} - {self.group}{self.type}'
+

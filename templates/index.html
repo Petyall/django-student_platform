@@ -126,7 +126,7 @@ DSTU
                         <div class="uza-contact-form mb-80">
                             
                             <form action="#" method="post">
-                                 
+                                 {%csrf_token%}
                                     <div class="col-12">
                                         <div class="form-group">
                                             {{form.as_p}}
