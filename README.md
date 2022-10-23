@@ -35,3 +35,12 @@
     Логин и пароль для админ панели (127.0.0.1:8000/admin/):
     Логин - petyal
     Пароль - 1
+
+
+# Если будет такая ошибка при установке зависимостей:
+ERROR: Failed building wheel for backports.zoneinfo
+ERROR: Could not build wheels for backports.zoneinfo, which is required to install pyproject.toml-based projects
+
+1:
+    Пишем в requirements.txt данный текст:
+    backports.zoneinfo==0.2.1; python_version<"3.9"
