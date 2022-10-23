@@ -1,43 +1,95 @@
-<center>
-<h1>Личный кабинет</h1>
-<a href="{% url 'index' %}">Вернуться</a>
-<h2>
-<br>Здравствуйте, {{ user.first_name }} {{ user.last_name }}!
-<br>Ваша почта - {{ user.email }}
-<br>Ваша группа - {{ user.group }}
-</h2>
+{% extends 'base_page.html' %} 
+{% load static %} 
+
+{% block title %} 
+DSTU
+{% endblock title %} 
+
+{% block container %} 
 
 
-<title>Download File</title>
-<center>
-   <h1>Download File using Django</h1>
-   <a href="{% url 'download_file'  %}">Download PDF</a>
-</center>
+<div class="breadcrumb-area">
+    <div class="container h-100">
+        <div class="row h-100 align-items-end">
+            <div class="col-12">
+                <div class="breadcumb--con">
+                    <h1 style="text-transform: none;" class="title">Личный кабинет</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="breadcrumb-bg-curve">
+
+            <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
+   
+    <section class="uza-why-choose-us-area">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-12 col-lg-6">
+                    <div class="choose-us-content mb-80">
+                        <div class="section-heading mb-4">
+                            <h5>Здравствуйте, {{ user.first_name }} {{ user.last_name }}!</h5>
+                        </div>
+                        <ul>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Ваш логин - {{ user.username }}</li>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Ваша почта - {{ user.email }}</li>
+                            {% if user.group != ' ' %}
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Ваша группа - {{ user.group }}</li>
+                            {% else %}
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Ваша профессия - {{ user.type }}</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="choose-us-thumbnail mb-80">
+                        <img src="{% static 'img/core-img/lk.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
-</center>
-
-<center>
-{% if text != 'Расписания нет' %}
-<table  border="1" cellpadding="4" cellspacing="0">
-   <caption>Расписание</caption>
-   <tr>
-    <th>День недели</th><th>1 пара</th><th>2 пара</th><th>3 пара</th><th>4 пара</th><th>5 пара</th>
-   </tr>
-   {% for key, value in text.items %}
-   <tr>
-       {% for lesson in value %}
-       {% if lesson == None %}
-           <td></td>
-       {% else %}
-           <td>{{lesson | linebreaksbr}}</td>
-       {% endif %}
+    
+    
+    
+    
+    <center>
+    <div class="mb-3">
+    <h1>Ваше расписание:</h1>
+    </div>
+    {% if text != 'Расписания нет' %}
+    <table border="1" cellpadding="4" cellspacing="0">
+       <tr>
+        <th>День недели</th><th>1 пара</th><th>2 пара</th><th>3 пара</th><th>4 пара</th><th>5 пара</th><th>6 пара</th>
+       </tr>
+       {% for key, value in text.items %}
+       <tr>
+           {% for lesson in value %}
+           {% if lesson == None %}
+               <td></td>
+           {% else %}
+               <td>{{lesson | linebreaksbr}}</td>
+           {% endif %}
+           {% endfor %}
+       </tr>
        {% endfor %}
-   </tr>
-   {% endfor %}
-  </table>
-</center>
-{% else %}
-<h1>расписания нет</h1>
-{%endif%}
+      </table>
+    </center>
+    {% else %}
+    <h1>расписания нет</h1>
+    {%endif%}
+    <center>
+        <div class="my-5">
+        <a href="{% url 'download_file'  %}"><h5>Скачать расписание</h5></a>
+        </div>
+     </center>
+    {% endblock container %} 
+    

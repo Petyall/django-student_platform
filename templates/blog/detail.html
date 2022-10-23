@@ -1,14 +1,57 @@
+{% extends 'base_page.html' %} 
+{% load static %} 
+
+{% block title %} 
+DSTU
+{% endblock title %} 
+
+{% block container %} 
+
+    <div class="breadcrumb-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h1 style="text-transform: none;" class="title">Блог DSTU</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-{% load static %}
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
 
-{% block content %}
+    <section class="blog-details-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="blog-details-content">
 
-<h1 class="text-center mt-5" id="blogdetailtitle">{{ blog.title }}</h1>
+                        <div class="post-details-text">
 
-<h5 class="text-center text-muted mb-5">{{ blog.date|date:'F jS Y' }}</h5>
-
-{{ blog.description|safe }}
-
-<a href="{% url 'index' %}">Назад</a>
-{% endblock %}
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-lg-10">
+                                    <div class="post-content text-center mb-50">
+                                        <a href="" class="post-date">{{ blog.date|date:'F jS Y' }}</a>
+                                        <h5>{{ blog.title }}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <center>
+                                    <img class="mb-50" src="{{ blog.picture.url }}" alt="" width="250" height="250">
+                                </center>
+                                </div>
+                                <div class="col-12 col-lg-10">
+                                    <p>{{ blog.description|safe }}</p>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock container %} 

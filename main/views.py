@@ -23,3 +23,13 @@ def index(request):
             error = 'Форма была неверной'
 
     return render(request, 'index.html', context)
+
+
+def sience(request):
+    return render(request, 'nauka.html')
+
+def profsouz(request):
+    return render(request, 'profsouz.html')
+
+def studsovet(request):
+    return render(request, 'studsovet.html')

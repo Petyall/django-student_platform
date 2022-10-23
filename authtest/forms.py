@@ -3,13 +3,40 @@ from .models import CustomUser
 
 
 class StudentRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput(attrs={'class':'form-control'}))
 
     class Meta:
         model = CustomUser
         fields = ('username','first_name', 'last_name', 'email', 'group')
 
+        widgets = {
+            'username': forms.TextInput(attrs={'class':'form-control'}),
+            'first_name': forms.TextInput(attrs={'class':'form-control'}),
+            'last_name': forms.TextInput(attrs={'class':'form-control'}),
+            'email': forms.EmailInput(attrs={'class':'form-control'}),
+        }
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('Passwords don\'t match.')
+        return cd['password2']
+
+class WorkerRegistrationForm(forms.ModelForm):
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput(attrs={'class':'form-control'}))
+
+    class Meta:
+        model = CustomUser
+        fields = ('username','first_name', 'last_name', 'email', 'type')
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class':'form-control'}),
+            'first_name': forms.TextInput(attrs={'class':'form-control'}),
+            'last_name': forms.TextInput(attrs={'class':'form-control'}),
+            'email': forms.EmailInput(attrs={'class':'form-control'}),
+        }
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
@@ -20,7 +47,7 @@ class StudentRegistrationForm(forms.ModelForm):
 class UserLoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
- 
+
     def clean(self):
         cleaned_data = super().clean()
         username = cleaned_data.get('username')
@@ -33,17 +60,5 @@ class UserLoginForm(forms.Form):
             raise forms.ValidationError(f'Пароль пользователя {username} введён неправильно!')
 
 
-class WorkerRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
-    class Meta:
-        model = CustomUser
-        fields = ('username','first_name', 'last_name', 'email', 'type')
-
-    def clean_password2(self):
-        cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
-            raise forms.ValidationError('Passwords don\'t match.')
-        return cd['password2']
         

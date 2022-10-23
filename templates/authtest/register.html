@@ -1,31 +1,86 @@
-
+{% extends 'base_page.html' %} 
 {% load static %} 
 
 {% block title %} 
-Регистрация | MHW
+DSTU
 {% endblock title %} 
 
 {% block container %} 
-
-<!-- Шапка -->
-<div class="breadcrumb-section breadcrumb-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <h1>Регистрация</h1>
+    <div class="breadcrumb-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h1 class="title">Регистрация</h1>
+                         
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+        </div>
     </div>
-</div>
 
+    <section class="uza-contact-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-between">
+                
 
-<h2>{{error}}</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    <button type="submit">Sign Up</button>
-</form>
-<!-- Конец формы регистрации -->
-{% endblock container %}
+                <div class="col-12 col-lg-8">
+                    <div class="uza-contact-form mb-80">
+                        <div class="contact-heading mb-50">
+                            <h5>Мы рады новым пользователям! <br>Пожалуйста, заполните форму ниже для регистрации</h5>
+                        </div>
+                        
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            {{error}}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Ваш логин:</label>
+                                            {{user_form.username}}
+                                        </p>
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Ваше имя:</label>
+                                            {{user_form.first_name}}
+                                        </p>
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Ваша фамилия:</label>
+                                            {{user_form.last_name}}
+                                        </p>
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Ваша почта:</label>
+                                            {{user_form.email}}
+                                        </p>
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Ваша группа:</label>
+                                            {{user_form.group}}
+                                        </p>
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Ваш пароль:</label>
+                                            {{user_form.password}}
+                                        </p>
+                                        <p>
+                                            <label class="form-label" for="form3Example4cdg">Повторите Ваш пароль:</label>
+                                            {{user_form.password2}}
+                                        </p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            
+                                  
+                                <div class="col-12">
+                                    <button class="btn uza-btn btn-3 mt-15">Зарегистрироваться</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+{% endblock container %} 

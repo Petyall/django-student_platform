@@ -1,72 +1,213 @@
-<h1>Home page</h1>
+{% extends 'base_page.html' %} 
+{% load static %} 
 
-<a href="#">
-    {% if user.is_authenticated %}
-      {{ user.username }}
-    {% else %}
-      Войти/Зарегистрироваться
-    {% endif %}
-  </a>
-  <ul class="sub-menu">
-    {% if user.is_authenticated %}
-    <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
-    <li><a href="{% url 'authtest_logout' %}">Выйти</a></li>
-    {% else %}
-    <li><a href="{% url 'authtest_login' %}">Вход</a></li>
-    <li><a href="{% url 'authtest_register' %}">Регистрация</a></li>
-    {% endif %}
-  </ul>
+{% block title %} 
+DSTU
+{% endblock title %} 
 
+{% block container %} 
 
-
-
-
-
-<center>
-<!-- Форма связи -->
-<div class="contact-from-section mt-150 mb-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mb-5 mb-lg-0">
-        <div class="form-title">
-          <h2>Есть какие-то вопросы?</h2>
-          <p>
-            Напишите в нашу службу тех.поддержки, которая ответит Вам в
-            кратчайшие сроки!
-          </p>
+    <section class="welcome-area">
+        <center>
+            <div class="single-welcome-slide">
+                <div class="background-curve">
+                    <img src="{% static 'img/core-img/curve-1.png' %}" alt="">
+                </div>
+                <div class="welcome-content h-100">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-text">
+                                    <h2 data-animation="fadeInUp" data-delay="100ms">ДГТУ -<br> твой путь в <span>будущее</span></h2>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="welcome-thumbnail">
+                                    <img src="{% static 'img/bg-img/1.png' %}" alt="" data-animation="slideInRight" data-delay="400ms">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </center>
         </div>
-        <div id="form_status"></div>
-        <div class="contact-form">
-          <form method="post">
-            {% csrf_token %}
-            
-            <p>{{ form.name }}
-            {{ form.email }}</p>
-            <p>{{ form.phone_number }}
-            {{ form.theme }}</p>
-            <p>{{ form.text }}</p>
-          
-            <button type="submit" class="btn btn-link"><a class="boxed-btn black" style="font-family:Roboto">Отправить</a></button>
-       </form> 
+    </section>
+
+    <section class="uza-portfolio-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h1>Блог ДГТУ</h1>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-</center>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="portfolio-sildes owl-carousel">
+                    {% for blog in blogs %}
+                    <div class="single-portfolio-slide">
+                        <img src="{{ blog.picture.url }}" alt="" style="border-radius: 2em;">
+                        <div class="overlay-effect">
+                            <a href="{% url 'blog:detail' blog.id %}"><h4>{{ blog.title }}</h4></a>
+                            <a href="{% url 'blog:detail' blog.id %}"><h5>{{ blog.date }} - {{ blog.status }}</h5></a>
+                            <a href="{% url 'blog:detail' blog.id %}"><p>{{ blog.description|striptags|truncatechars:150 }}</p></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="border-line"></div>
+        </div>
+
+        <div class="portfolio-bg-curve">
+            <img src="{% static 'img/core-img/curve-3.png' %}" alt="">
+        </div>
+    </section>
+
+
+    <section class="uza-about-us-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="about-us-thumbnail mb-80">
+                        <img src="{% static 'img/core-img/meshi.jpg' %}" style="border-radius: 2em;" alt="">
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <div class="about-us-content mb-80">
+                        <h1>Месхи Бесарион Чохоевич</h1>
+                        <h5>
+                            Ректор ДГТУ, член-корреспондент РАО, доктор технических наук, профессор
+                        </h5>
+                        <p>
+                            Сегодня ДГТУ – крупнейший научно-образовательный центр Юга России, успешно сочетающий фундаментальные традиции российского академического образования с передовыми технологиями и методиками обучения.</p>
+                        <p>
+							
+                            ДГТУ – вуз с давними традициями. Мы гордимся нашей историей и достижениями. 
+                            </p>
+                            <p>
+							
+                                В то же время ДГТУ – это вуз, активно участвующий в проводимой Минобрнауки РФ реформе высшего образования. Университет является участником программы «Приоритет 2030». Воспитывая в своих стенах первоклассных специалистов, развивая научно-исследовательскую деятельность, поддерживая технологические инновации, мы строим будущее, которым можно будет гордиться.
+                            
+                                </p>
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="uza-blog-area">
+        <div class="blog-bg-curve">
+            <img src="{% static 'img/core-img/curve-4.png' %}" alt="">
+        </div>
+
+
+        <div class="uza-cta-area section-padding-0-80">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-8">
+                        <div class="cta-content mb-80">
+                            <h1>Хочешь задать вопрос ректору?</h1>
+                            <h5>Просто напиши его в форме ниже! Вопрос не является анонимным!</h5>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="uza-contact-form mb-80">
+                            
+                            <form action="#" method="post">
+                                 
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{form.as_p}}
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn uza-btn btn-3 mt-15">Отправить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
-{% for blog in blogs %}
-<div class="row justify-content-center my-3">
-  <div class="col-md-10">
-    <a href="{% url 'blog:detail' blog.id %}">
-      <h2>{{ blog.title }}</h2>
-    </a>
-    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
-    <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
-  </div>
-</div>
-{% endfor %}
- 
+        <div class="breadcrumb-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="breadcumb--con">
+                            <h1 class="title">Подразделения <br>ДГТУ</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+
+            <div class="breadcrumb-bg-curve">
+                <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+            </div>
+        </div>
+
+        <section class="uza-services-area section-padding-80-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-service-area mb-80">
+                            <a href = "{% url 'profsouz' %}">
+                                <div class="service-icon">
+                                    <img class="icon_cone_alt" src="{% static 'img/core-img/профсоюз2.png' %}" style="height: 55px; weight:55px"> 
+                                </div>
+                                <h5>Профсоюзная организация</h5>
+                            </a>
+                            
+                            <p>Первичная профсоюзная организация обучающихся ДГТУ - молодежная, общественная организация, объединяющая креативных, активных и целеустремленных личностей</p>
+                        </div>
+                    </div>
+    
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-service-area mb-80">
+                            <a href = "{% url 'studsovet' %}">
+                            <div class="service-icon">
+                                <img class="icon_cone_alt" src="{% static 'img/core-img/студсовет.png' %}" style="height: 50px; weight:50px;">
+                            </div>
+                            <h5>Студенческий совет</h5>
+                            </a>
+                            <p>Студенческий совет – Организация, существующая исключительно на энтузиазме ее участников, которые сами задают цели, ставят задачи, находят пути их решения и достигают желаемых результатов</p>
+                        </div>
+                    </div>
+    
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-service-area mb-80">
+                            <a href = "{% url 'sience' %}">
+                            <div class="service-icon">
+                                <img class="icon_cone_alt" src="{% static 'img/core-img/наука2.png' %}" style="height: 60px; weight:60px;">
+                            </div>
+                            <h5>Наука и инновации</h5>
+                            </a>
+                            <p>Cегодня все усилия вуза направлены на формирование целостной системы образования, ориентированной на результат, более полное внедрение современных образовательных технологий, создание инновационной образовательной и научной среды</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+         
+    </section>
+
+    {% endblock container %} 

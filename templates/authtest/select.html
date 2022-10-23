@@ -1,3 +1,52 @@
-<p>Кто ты?</p>
-<a href="{% url 'authtest_register_student' %}">Студент</a>
-<a href="{% url 'authtest_register_worker' %}">Сотрудник</a>
+{% extends 'base_page.html' %} 
+{% load static %} 
+
+{% block title %} 
+DSTU
+{% endblock title %} 
+
+{% block container %} 
+    <div class="breadcrumb-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h1 class="title">Регистрация</h1>
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
+    <section class="uza-contact-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <div class="col-12 col-lg-8">
+                    <div class="uza-contact-form mb-80">
+                        <div class="contact-heading mb-50">
+                            <h5>Для регистрации выберите, кем Вы являетесь</h5>
+                        </div>
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <a href="{% url 'authtest_register_student' %}" type="text" class="form-control mb-30" name="first-name"><h2 style="display:flex; justify-content: center;">Студент</h2></a>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a href="{% url 'authtest_register_worker' %}" type="text" class="form-control mb-30" name="first-name"><h2 style="display:flex; justify-content: center;"">Сотрудник</h2></a>
+                            
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+{% endblock container %} 

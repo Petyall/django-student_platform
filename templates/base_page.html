@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="uza - Model Agency HTML5 Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Образование</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts.css' %}">
+
+</head>
+
+<body class="body">
+    <div id="preloader">
+        <div class="wrapper">
+            <div class="cssload-loader"></div>
+        </div>
+    </div>
+
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                        <form action="index.html" method="post">
+                            <input type="search" name="top-search-bar" class="form-control" placeholder="">
+                            <button type="submit">Найти</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="header-area">
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <nav class="classy-navbar justify-content-between" id="uzaNav">
+                    <a class="nav-brand" href="/"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <div class="classy-menu">
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="current-item"><a href="/">Главная</a></li>
+                                <li><a href="/">Статьи</a></li>
+                                <li>
+                                    <a href="#">
+                                        {% if user.is_authenticated %}
+                                        {{ user.username }}
+                                      {% else %}
+                                        Войти/Зарегистрироваться
+                                      {% endif %}
+
+                                </a>
+                                    <ul class="dropdown">
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
+                                        <li><a href="{% url 'authtest_logout' %}">Выйти</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'authtest_login' %}">Вход</a></li>
+                                        <li><a href="{% url 'authtest_register' %}">Регистрация</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="get-a-quote ml-4 mr-3">
+                                <a href="#" class="btn uza-btn">Вопрос Ректору</a>
+                            </div>
+                            <div class="search-icon" data-toggle="modal" data-target="#searchModal">
+                                <i class="icon_search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    {% block container %}
+    {% endblock container %}
+    
+    <footer class="footer-area section-padding-80-0">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <h4 class="widget-title">Выпускникам</h4>
+                        <nav>
+                            <ul class="our-link">
+                                <li><a href="#">Трудоустройство</a></li>
+                                <li><a href="#">Ассоциация выпускников</a></li>
+                                <li><a href="#">Партнеры ДГТУ</a></li>
+                                <li><a href="#">Европейское приложение</a></li>
+                                 
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+
+                        <h4 class="widget-title">Университет</h4>
+
+
+                        <nav>
+                            <ul class="our-link">
+                                <li><a href="#">Главная</a></li>
+                                <li><a href="#">Преподаватели</a></li>
+                                <li><a href="#">Студсовет</a></li>
+                                <li><a href="#">Профком</a></li>
+                                <li><a href="#">Наука</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <h4 class="widget-title">Студентам</h4>
+                        <nav>
+                            <ul class="our-link">
+                                <li><a href="#">Методические материалы</a></li>
+                                <li><a href="#">Инклюзивное образование</a></li>
+                                <li><a href="#">Стипендии</a></li>
+                                <li><a href="#">Библиотека</a></li>
+                                <li><a href="#">Деятельность</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <h4 class="widget-title">О нас</h4>
+                            <div class="footer-content mb-15">
+                                <h3>8-800-555-35-35</h3>
+                                <p>Донской государственный
+                                    технический университет <br>
+                                     © 2022 344000, Ростов-на-Дону, площадь Гагарина 1, <br> mail@gmail.com</p>
+                            </div>
+                         
+                         
+                    </div>
+                </div>
+
+            </div>
+
+ 
+        </div>
+    </footer>
+
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'js/uza.bundle.js' %}"></script>
+    <script src="{% static 'js/default-assets/active.js' %}"></script>
+
+</body>
+
+</html>

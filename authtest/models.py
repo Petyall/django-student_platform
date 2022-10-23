@@ -13,8 +13,8 @@ class CustomUser(AbstractUser):
 
     TYPES = (
         ('', ''),
-        ('prepod', 'Преподаватель'),
-        ('worker', 'Сотрудник'),
+        ('Преподаватель', 'Преподаватель'),
+        ('Сотрудник', 'Сотрудник'),
     )
 
     group = models.CharField('Группа', max_length=5, choices=GROUPS, default=' ')

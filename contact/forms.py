@@ -8,19 +8,18 @@ class ContactForm(ModelForm):
         fields = ["name", "email", "phone_number", "theme", "text"]
         widgets = {
             "name": TextInput(attrs={
-                'placeholder': 'Ваше имя'
+                'class':'form-control'
             }),
             "email": TextInput(attrs={
-                'placeholder': 'Ваша почта'
+                'class':'form-control'
             }),
             "phone_number": TextInput(attrs={
-                'placeholder': 'Ваш номер телефона'
+                'class':'form-control'
             }),
             "theme": TextInput(attrs={
-                'placeholder': 'Тема Вашего вопроса'
+                'class':'form-control'
             }),
             "text": Textarea(attrs={
-                'placeholder': 'Опишите Вашу проблему в деталях',
+                'class':'form-control'
             })
         }
-        

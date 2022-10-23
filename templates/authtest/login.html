@@ -1,9 +1,55 @@
-<div class="container py-5">
-    <h1>Login</h1>
-    <form method="POST">
-      {% csrf_token %}
-      {{ login_form}}
-      <button class="btn btn-primary" type="submit">Login</button>
-    </form>
-    <p class="text-center">Don't have an account? <a href="{% url 'authtest_register'%}">Create an account</a>.</p>
-  </div>
+{% extends 'base_page.html' %} 
+{% load static %} 
+
+{% block title %} 
+DSTU
+{% endblock title %} 
+
+{% block container %} 
+
+    <div class="breadcrumb-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h1 class="title">Авторизация</h1>
+                        <nav aria-label="breadcrumb">
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
+
+    <section class="uza-contact-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12 col-lg-8">
+                    <div class="uza-contact-form mb-80">
+                         
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <p><label class="form-label" for="form3Example4cdg">Ваш логин:</label>
+                                    {{login_form.username}}
+                                    </p>
+                                    <p><label class="form-label" for="form3Example4cdg">Ваш пароль:</label>
+                                    {{login_form.password}}
+                                </p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn uza-btn btn-3 mt-15">Отправить</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+
+
+                {% endblock container %} 
